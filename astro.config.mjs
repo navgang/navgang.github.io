@@ -4,7 +4,7 @@ import netlify from "@astrojs/netlify";
 import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
-import github from "astro-icon/github";
+//import github from "astro-icon/github";
 
 import solidJs from "@astrojs/solid-js";
 import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
@@ -16,7 +16,7 @@ export default defineConfig({
   site: "https://navgang.github.io",
   integrations: [
     sitemap(),
-    github(),
+    //github(),
     robotsTxt({
       sitemap: [
         "https://navgang.github.io/sitemap-index.xml",
