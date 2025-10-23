@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://navgang.github.io/sitemap-index.xml
+Sitemap: https://navgang.github.io/sitemap-0.xml
