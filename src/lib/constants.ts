@@ -1,6 +1,6 @@
 export const LINKS = {
   github: "https://github.com/navgang",
-  linkedin: "https://github.com/navgang",
+  linkedin: "www.linkedin.com/in/navya-gangrade/",
   email: "navyagangrade@arizona.edu",
 };
 

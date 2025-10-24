@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# instruction
+instructions.txt
+
 # generated types
 .astro/
 
