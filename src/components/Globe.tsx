@@ -62,7 +62,7 @@ const GlobeComponent = () => {
       )
       .style("stroke", "black")
       .style("stroke-width", 0.3)
-      .style("opacity", 0.8);
+      .style("opacity", 0.1);
 
     d3.timer(() => {
       const rotate = projection.rotate();
