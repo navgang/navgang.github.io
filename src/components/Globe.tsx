@@ -6,13 +6,13 @@ const GlobeComponent = () => {
   let mapContainer: HTMLDivElement | undefined;
 
   const visitedCountries = [
-    "India",
-    "United States of America",
-    "Austria",
     "Spain",
-    "United Kingdom",
+    "Austria",
+    "India",
     "Egypt",
+    "England",
     "Canada",
+    "USA"
   ];
 
   onMount(() => {
@@ -47,9 +47,19 @@ const GlobeComponent = () => {
       .attr("cy", height / 2)
       .attr("r", initialScale);
 
-    let map = svg.append("g");
+    const tooltip = d3
+      .select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("background", "rgba(0, 0, 0, 0.75)")
+      .style("color", "white")
+      .style("padding", "6px 10px")
+      .style("border-radius", "6px")
+      .style("font-size", "14px")
+      .style("pointer-events", "none")
+      .style("opacity", 0);
 
-    map
+    svg
       .append("g")
       .attr("class", "countries")
       .selectAll("path")
@@ -57,13 +67,29 @@ const GlobeComponent = () => {
       .enter()
       .append("path")
       .attr("d", (d: any) => pathGenerator(d as any))
-      .attr("fill", (d: { properties: { name: string } }) =>
+      .attr("fill", (d: any) =>
         visitedCountries.includes(d.properties.name) ? "#E63946" : "white"
       )
       .style("stroke", "black")
       .style("stroke-width", 0.3)
-      .style("opacity", 0.1);
-
+      .style("opacity", 0.8)
+      .on("mouseover", function (event: MouseEvent, d: any) {
+        if (visitedCountries.includes(d.properties.name)) {
+          tooltip.transition().duration(150).style("opacity", 1);
+          tooltip.html(d.properties.name);
+        }
+      })
+      .on("mousemove", function (event: MouseEvent, d: any) {
+        if (visitedCountries.includes(d.properties.name)) {
+          tooltip
+            .style("left", event.pageX + 10 + "px")
+            .style("top", event.pageY - 20 + "px");
+        }
+      })
+      .on("mouseout", function () {
+        tooltip.transition().duration(150).style("opacity", 0);
+      });
+    
     d3.timer(() => {
       const rotate = projection.rotate();
       const k = sensitivity / projection.scale();

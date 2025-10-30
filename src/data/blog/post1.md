@@ -1,18 +1,13 @@
 ---
-title: "Hello, World"
-description: "this is a post example"
-pubDate: 2023-01-21
+title: "Benchmark on Peer Review Toxic Detection: A Challenging Task with a New Dataset"
+description: "Publication"
+pubDate: 2025-02-01
 category: "intro"
 draft: false
 ---
 
 # Hi there!
 
-This Markdown file creates a page at `your-domain.com/blog/post1/`
+Check out one of my published papers!
 
-It probably isn't styled much, but Markdown does support:
-
-- **bold** and _italics._
-- lists
-- [links](https://astro.build)
-- and more!
+<a href="https://www.arxiv.org/abs/2502.01676" style="color:#99F9FE;">Publication</a>

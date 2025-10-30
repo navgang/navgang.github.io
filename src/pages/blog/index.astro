@@ -3,11 +3,14 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostRow from "../../components/Blog/PostRow.astro";
 
-const posts = (await getCollection("blog"))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
-);
+const posts = (await getCollection("blog"))
+  ?.map((post) => ({
+    ...post,
+    pubDate: post.data.pubDate ? new Date(post.data.pubDate) : new Date(),
+  }))
+  .sort(
+    (a, b) => (b.pubDate as Date).getTime() - (a.pubDate as Date).getTime()
+  );
 ---
 
 <script>
@@ -20,7 +23,7 @@ const posts = (await getCollection("blog"))?.sort(
 </script>
 
 <Layout
-  description="Software developer with strong focus on the user experience animations and micro interactions"   title="Gianmarco Cavallo - Blog"
+  description="Navya Gangrade's collection of posters and publications"   title="Navya Gangrade - Posters and Publications"
 >
   <main
     class="w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
